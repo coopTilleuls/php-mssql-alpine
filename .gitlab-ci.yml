@@ -1,0 +1,17 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - deploy
+
+release-and-deploy-on-gcloud:
+  stage: deploy
+  before_script:
+    - apk add --no-cache --update bash
+    - docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
+  script:
+    - ./build-deploy.sh
+  only:
+    - master
