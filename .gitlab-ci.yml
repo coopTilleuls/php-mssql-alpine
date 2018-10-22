@@ -6,7 +6,7 @@ services:
 stages:
   - deploy
 
-release-and-deploy-on-gcloud:
+build-deploy:
   stage: deploy
   before_script:
     - apk add --no-cache --update bash
